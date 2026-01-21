@@ -1,38 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { Employee } from './employee';
-import { Product } from './products';
-
+import { UserListComponent } from './components/user-list/user-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  standalone: true,
+  imports: [UserListComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
-export class App {
-  public employees: {
-    id: number;
-    firstname: string;
-    lastname: string;
-    email: string;
-  }[] = [];
-
-  public products: {
-    id: string;
-    product: string;
-    description: string;
-    price: number;
-  }[] = [];
-
-  constructor(
-    private _employeeService: Employee,
-    private _productService: Product
-  ) {}
-
-  ngOnInit() {
-    this.employees = this._employeeService.getEmployees();
-    this.products = this._productService.getProducts();
-  }
+export class AppComponent {
+  title = 'my-rest-client';
 }
